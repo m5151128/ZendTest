@@ -17,6 +17,19 @@
   $spreadsheetKey = "spreadsheetKey"; // スプレットシートのキー
   $worksheetId    = "od6"; // ワークシートのID
 
+  // データ取得
+  $query = new Zend_Gdata_Spreadsheets_ListQuery();
+  $query->setSpreadsheetKey($spreadsheetKey);
+  $query->setWorksheetId($worksheetId);
+  $listFeed = $spreadsheetService->getListFeed($query);
+  foreach($listFeed as $rowData) {
+      $rowEntry = $rowData->getCustom();
+      foreach($rowEntry as $cellData) {
+          echo $cellData->getColumnName() . ' : ' . $cellData->getText() . PHP_EOL;
+      }
+      echo PHP_EOL;
+  }
+
   // 書き込みたいデータ(１行ぶん。列名=>データ)
   $rowData = [
       'col1' => 'test',
