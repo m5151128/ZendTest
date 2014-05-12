@@ -12,7 +12,7 @@
   $service  = Zend_Gdata_Spreadsheets::AUTH_SERVICE_NAME;
 
   $client = Zend_Gdata_ClientLogin::getHttpClient($email, $password, $service);
-  $spreadsheet = new Zend_Gdata_Spreadsheets($client);
+  $spreadsheetService = new Zend_Gdata_Spreadsheets($client);
 
   $spreadsheetKey = "spreadsheetKey"; // スプレットシートのキー
   $worksheetId    = "od6"; // ワークシートのID
@@ -24,6 +24,6 @@
       'col3' => date('Y/m/d'),
   ];
 
-  // 1行ぶんのデータを最後尾に追記する
-  echo ($spreadsheet->insertRow($rowData, $spreadsheetKey, $worksheetId)) ? "OK" : "NG";
+  // 1行分のデータを最後尾に追記する
+  echo ($spreadsheetService->insertRow($rowData, $spreadsheetKey, $worksheetId)) ? "OK" : "NG";
   echo PHP_EOL;
