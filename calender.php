@@ -32,7 +32,11 @@ $query->setUser('default');
 $query->setVisibility('private');
 $query->setProjection('full');
 $query->setOrderby('starttime');
-$query->setFutureevents('true');
+//$query->setFutureevents('true');
+
+// 期間の指定
+$query->setStartMin('2013-04-01');
+$query->setStartMax('2014-05-30');
 
 // カレンダーサーバからイベントの一覧を取得します
 try {
