@@ -40,3 +40,14 @@
       }
       echo PHP_EOL;
   }
+
+  // 行の後のデータ
+  $updateData = [
+      'col1' => 1,
+      'col2' => '',
+      'col3' => date('Y-m-d H:i:s'),
+      'col4' => '更新した',
+      ];
+
+  echo ($spreadsheetService->updateRow($rowData, $updateData)) ? '更新OK' : 'NG';
+  echo PHP_EOL;
