@@ -17,6 +17,17 @@
   $spreadsheetKey = "spreadsheetKey"; // スプレットシートのキー
   $worksheetId    = "od6"; // ワークシートのID
 
+  // 書き込みたいデータ(１行ぶん。列名=>データ)
+  $rowData = [
+      'col1' => 1,
+      'col2' => 'テスト',
+      'col3' => date('Y/m/d'),
+  ];
+
+  // 1行分のデータを最後尾に追記する
+  echo ($spreadsheetService->insertRow($rowData, $spreadsheetKey, $worksheetId)) ? "OK" : "NG";
+  echo PHP_EOL;
+
   // データ取得
   $query = new Zend_Gdata_Spreadsheets_ListQuery();
   $query->setSpreadsheetKey($spreadsheetKey);
@@ -29,14 +40,3 @@
       }
       echo PHP_EOL;
   }
-
-  // 書き込みたいデータ(１行ぶん。列名=>データ)
-  $rowData = [
-      'col1' => 'test',
-      'col2' => 'テスト',
-      'col3' => date('Y/m/d'),
-  ];
-
-  // 1行分のデータを最後尾に追記する
-  echo ($spreadsheetService->insertRow($rowData, $spreadsheetKey, $worksheetId)) ? "OK" : "NG";
-  echo PHP_EOL;
