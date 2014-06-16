@@ -41,7 +41,7 @@
       echo PHP_EOL;
   }
 
-  // 行の後のデータ
+  // 更新用のデータ
   $updateData = [
       'col1' => 1,
       'col2' => '',
