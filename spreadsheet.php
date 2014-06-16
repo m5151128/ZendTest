@@ -49,5 +49,9 @@
       'col4' => '更新した',
       ];
 
-  echo ($spreadsheetService->updateRow($rowData, $updateData)) ? '更新OK' : 'NG';
+  $updateListEntry = $spreadsheetService->updateRow($rowData, $updateData);
+  echo ($updateListEntry) ? '更新OK' : 'NG';
+  echo PHP_EOL;
+
+  echo (!$spreadsheetService->deleteRow($updateListEntry)) ? '削除OK' : 'NG';
   echo PHP_EOL;
