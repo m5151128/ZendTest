@@ -16,3 +16,9 @@
 
   $spreadsheetKey = "1XjNoUsquo8CkL8bzfMptj-S1Y8QqNtZM6z9qa2gRV30"; // スプレットシートのキー
   $worksheetId    = "od6"; // ワークシートのID
+
+  // リストの取得
+  $query = new Zend_Gdata_Spreadsheets_ListQuery();
+  $query->setSpreadsheetKey($spreadsheetKey);
+  $query->setWorksheetId($worksheetId);
+  $listFeed = $spreadsheetService->getListFeed($query);
