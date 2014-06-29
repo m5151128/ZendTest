@@ -9,7 +9,9 @@
   foreach($listFeed as $rowData) {
       $rowEntry = $rowData->getCustom();
       foreach($rowEntry as $cellData) {
-          echo (!$spreadsheetService->deleteRow($rowData)) ? 'OK' : 'NG';
-          echo PHP_EOL;
+          if ($cellData->getColumnName() == 'col1' && $cellData->getText() == '1') {
+              echo (!$spreadsheetService->deleteRow($rowData)) ? 'OK' : 'NG';
+              echo PHP_EOL;
+          }
       }
   }

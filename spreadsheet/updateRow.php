@@ -17,6 +17,9 @@
   foreach($listFeed as $rowData) {
       $rowEntry = $rowData->getCustom();
       foreach($rowEntry as $cellData) {
-        echo ($spreadsheetService->updateRow($rowData, $updateData)) ? 'OK' : 'NG';
+          if ($cellData->getColumnName() == 'col1' && $cellData->getText() == '1') {
+            echo ($spreadsheetService->updateRow($rowData, $updateData)) ? 'OK' : 'NG';
+            echo PHP_EOL;
+          }
       }
   }
