@@ -9,7 +9,7 @@
   foreach($listFeed as $rowData) {
       $rowEntry = $rowData->getCustom();
       foreach($rowEntry as $cellData) {
-          echo $cellData->getColumnName() . ' : ' . $cellData->getText() . PHP_EOL;
+          echo $cellData->getColumnName() . ' : ' . $cellData . PHP_EOL;
       }
       echo PHP_EOL;
   }
