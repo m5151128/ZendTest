@@ -28,12 +28,12 @@ class getFileList
           exit("Error: メールアドレスまたはパスワードが正しくありません\n");
         }
 
-        $spredsheetService = new Zend_Gdata_Spreadsheets($client);
+        $this->spreadsheetService = new Zend_Gdata_Spreadsheets($client);
     }
 
     public function run()
     {
-        $feed = $spreadsheetService->getSpreadsheetFeed();
+        $feed = $this->spreadsheetService->getSpreadsheetFeed();
 
         $i = 0;
         foreach($feed->entries as $entry) {
