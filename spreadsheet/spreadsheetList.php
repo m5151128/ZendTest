@@ -1,44 +1,36 @@
 <?php
-set_include_path(__DIR__ . '/../ZendGdata/library/');
+require_once __DIR__ . '/authentication.php';
 
-require_once 'Zend/Loader.php';
-Zend_Loader::loadClass('Zend_Gdata');
-Zend_Loader::loadClass('Zend_Gdata_ClientLogin');
-Zend_Loader::loadClass('Zend_Gdata_Spreadsheets');
-
-$email = getInput("メールアドレス(example: hogehoge@gmail.com)");
-$password = getInput("パスワード");
-
-function getInput($text)
-{
-    echo $text . ': ';
-    return trim(fgets(STDIN));
-}
-
-$sample = new getFileList($email, $password);
-$sample->run();
-
-class getFileList
+class spreadsheetList extends authentication
 {
     public function __construct($email, $password)
     {
-        try {
-          $client = Zend_Gdata_ClientLogin::getHttpClient($email, $password, Zend_Gdata_Spreadsheets::AUTH_SERVICE_NAME);
-        } catch (Exception $e) {
-          exit("Error: メールアドレスまたはパスワードが正しくありません\n");
-        }
-
-        $this->spreadsheetService = new Zend_Gdata_Spreadsheets($client);
+        parent::__construct($email, $password);
+        $this->getList();
     }
 
-    public function run()
+    public function getList()
     {
-        $feed = $this->spreadsheetService->getSpreadsheetFeed();
+        $spreadsheetFeed = $this->spreadsheetService->getSpreadsheetFeed();
+
+        $this->printFeed($spreadsheetFeed, "Spreadsheet");
+        return $spreadsheetFeed;
+    }
+
+    public function printFeed($feed, $listName)
+    {
+        echo PHP_EOL;
+        echo "---List Of " . $listName . "---" . PHP_EOL;
+        echo "(Number: " . $listName. " Name)" . PHP_EOL;
 
         $i = 0;
         foreach($feed->entries as $entry) {
             echo $i . ': ' .  $entry->title . "\n";
             $i++;
         }
+
+        echo PHP_EOL;
     }
 }
+
+$obj = new spreadsheetList($email, $password);
