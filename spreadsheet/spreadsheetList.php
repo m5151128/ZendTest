@@ -11,7 +11,7 @@ class spreadsheetList extends authentication
 
     public function getList()
     {
-        $spreadsheetFeed = $this->spreadsheetService->getSpreadsheetFeed();
+        $spreadsheetFeed = $this->spreadsheetFeed;
 
         $this->printFeed($spreadsheetFeed, "Spreadsheet");
         return $spreadsheetFeed;

@@ -5,7 +5,7 @@ class worksheetList extends spreadsheetList
 {
     public function getList()
     {
-        $spreadsheetFeed = parent::getList();
+        $spreadsheetFeed = $this->spreadsheetFeed;
 
         $ssNo = getInput("Input SpreadSheet Number");
         $ssURL = explode('/', $spreadsheetFeed->entries[$ssNo]->id->text);

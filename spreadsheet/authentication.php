@@ -17,7 +17,7 @@ class authentication
         }
 
         $this->spreadsheetService = new Zend_Gdata_Spreadsheets($client);
-        //return null;
+        $this->spreadsheetFeed = $this->spreadsheetService->getSpreadsheetFeed();
     }
 }
 
