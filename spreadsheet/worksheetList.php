@@ -5,10 +5,8 @@ class worksheetList extends spreadsheetList
 {
     public function getList()
     {
-        $spreadsheetFeed = $this->spreadsheetFeed;
-
         $ssNo = getInput("Input SpreadSheet Number");
-        $ssURL = explode('/', $spreadsheetFeed->entries[$ssNo]->id->text);
+        $ssURL = explode('/', $this->spreadsheetFeed->entries[$ssNo]->id->text);
         // print_r($ssURL);
         // $ssURL{ [0] => "https", [1] => "", [2] => "spreadseets.google.com", [3] => "feeds", [4] => "spreadsehhts", [5] => "スプレットシートのキー"
         $ssKey = $ssURL[5];
@@ -22,3 +20,4 @@ class worksheetList extends spreadsheetList
 }
 
 $obj = new worksheetList($email, $password);
+$obj->getList();

@@ -3,18 +3,9 @@ require_once __DIR__ . '/authentication.php';
 
 class spreadsheetList extends authentication
 {
-    public function __construct($email, $password)
-    {
-        parent::__construct($email, $password);
-        $this->getList();
-    }
-
     public function getList()
     {
-        $spreadsheetFeed = $this->spreadsheetFeed;
-
-        $this->printFeed($spreadsheetFeed, "Spreadsheet");
-        return $spreadsheetFeed;
+        $this->printFeed($this->spreadsheetFeed, "Spreadsheet");
     }
 
     public function printFeed($feed, $listName)
@@ -34,3 +25,4 @@ class spreadsheetList extends authentication
 }
 
 $obj = new spreadsheetList($email, $password);
+$obj->getList();
