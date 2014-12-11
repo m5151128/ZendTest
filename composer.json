@@ -1,0 +1,5 @@
+{
+  "require": {
+    "zend/gdata": "dev-master"
+  }
+}

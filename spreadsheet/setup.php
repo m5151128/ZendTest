@@ -1,5 +1,5 @@
 <?php
-  set_include_path(__DIR__ . '/../ZendGdata/library/');
+  set_include_path(__DIR__ . '/../vendor/zend/gdata/library/');
 
   require_once 'Zend/Loader.php';
   Zend_Loader::loadClass('Zend_Gdata');
